@@ -21,6 +21,7 @@ function Root() {
         <ProductProvider value={{data, isLoading, isError}}>
           <Header />
           <Outlet />
+          {/* <Footer/> */}
         </ProductProvider>
     </>
   )
