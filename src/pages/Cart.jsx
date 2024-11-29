@@ -13,12 +13,16 @@ function Cart() {
       return totalPrice + (currProduct.quantity * Math.round(Number(currProduct.price)))
    }, 0)
 
+   const onCheckout = () => {
+         alert("Thank you for checking out");
+   }
+
    const discount = 0;
    return (
       <div className='flex gap-10 my-16 px-8'>
-         <div className='w-1/2'>
+         <div className='xl:w-1/2 w-2/3'>
             {products.length === 0 ? (
-               <h1 className='text-5xl text-center font-medium mt-6 text-indigo-800'>No Items in the cart</h1>
+               <h1 className='xl:text-5xl text-3xl text-center font-medium mt-6 text-indigo-800'>No Items in the cart</h1>
             ) : (
                <div className='flex flex-col gap-4 px-4'>
                   {products.map(product => (
@@ -27,16 +31,16 @@ function Cart() {
                </div>
             )}
          </div>
-         <div className='w-1/2 p-10 bg-gray-100 h-[30rem] text-2xl font-normal rounded-lg  border'>
-            <h1 className='text-indigo-800 text-4xl font-medium mb-12'>Order Summary</h1>
-            <div className='flex flex-col gap-6'>
+         <div className='xl:w-1/2 w-1/3 p-10 bg-gray-100 h-[30rem] text-2xl font-normal rounded-lg  border'>
+            <h1 className='text-indigo-800 xl:text-4xl text-3xl font-medium mb-12'>Order Summary</h1>
+            <div className='flex flex-col gap-6 xl:text-2xl text-base'>
                <h1>Subtotal ({totalItems} items) :  $ {totalAmount}.99
                </h1>
                <h1>Shipping Fee :  $ {totalItems * 2}.00</h1>
                <h1>Shipping Fee Discount :  $ {discount}.00</h1>
                <h1>Total :  $ {(totalItems * 2) + totalAmount}.99</h1>
             </div>
-            <Button text='Proceed to Checkout' className='mt-12 text-2xl bg-indigo-700 text-white px-6 py-3 rounded-lg' />
+            <Button text='Proceed to Checkout' className='mt-12 xl:text-2xl text-xl bg-indigo-700 text-white xl:px-6 xl:py-3 py-2 px-4 rounded-lg' />
          </div>
       </div>
    )

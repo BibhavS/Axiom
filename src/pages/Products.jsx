@@ -21,9 +21,9 @@ function Products() {
 
   return (
      <>
-      <h1 className='text-center text-indigo-900 text-4xl mt-12 font-medium'>Check our Products</h1>
+      <h1 className='text-center text-indigo-900 lg:text-4xl text-3xl mt-12 font-medium'>Check our Products</h1>
       <div className='mt-8'>
-        <div className='grid grid-cols-3 '>
+        <div className='grid lg:grid-cols-3 grid-cols-2'>
             {data.map((product) => {
               return (
                 <ProductCard key={product.id} product={product}/>

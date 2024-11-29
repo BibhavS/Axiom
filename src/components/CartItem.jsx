@@ -7,11 +7,11 @@ function CartItem({product}) {
   return (
     <div className='p-4 shadow-xl'>
        <div className='flex gap-8 items-center font-medium'>
-          <div className='w-[35%]'>
-           <img src={product.image} alt="product" className='h-[14rem] w-[12rem]'/>
+          <div className='2xl:w-[35%] w-[45%]'>
+           <img src={product.image} alt="product" className='xl:h-[14rem] h-[11rem] w-[12rem]'/>
           </div>
           <div className='flex w-[75%] items-start flex-col gap-6'>
-             <h3 className='text-2xl'>{product.title}</h3>
+             <h3 className='2xl:text-2xl text-xl'>{product.title}</h3>
              <h3 className='text-xl text-red-800'>Price : $ {product.price}</h3>
              <div className='text-xl flex items-center gap-4'>
                 <h3 className='w-[8rem]'>Quantity : {product.quantity}</h3>

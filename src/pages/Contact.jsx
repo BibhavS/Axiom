@@ -1,66 +1,52 @@
 import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
 
 function Contact() {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [number, setNumber] = useState();
-  const [reason, setReason] = useState('');
+  const {register, handleSubmit, formState: {errors}, reset} = useForm();
+  
+  const submit = (data) => {
+      console.log(data);
+      alert(`Thank you ${data.fullName} for submitting the form\nWe will contact you very soon`);
+      reset();
+  }
 
-
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      let counter = 0;
-      if(fullName.trim().length == 0){
-         alert("Name cannot be empty");
-         counter++;
-      }
-      if(email.trim().length == 0 && email.trim().includes('@')){
-         alert("Invalid email");
-         counter++;
-      }
-      if(number.trim().length < 8){
-         alert("Invalid number");
-         counter++;
-      }
-      if(reason.trim().length < 5){
-         alert("Please write valid reasons");
-         counter++;
-      }
-
-      if(counter === 0){
-         alert("Thank you for submitting the form. We will soon contact you");
-         setEmail('');
-         setFullName('');
-         setNumber('');
-         setReason('');
-      }
-   }
   return (
      <>
-      <h1 className='text-3xl text-indigo-900 font-medium text-center mt-8'>Get in touch with us</h1>
-      <div className='mt-8 flex justify-center'>
-        <form className='p-2 shaodow-xl flex flex-col text-indigo-900 gap-6 w-[32rem] rounded-xl text-lg'>
+      <h1 className='text-3xl text-indigo-900 font-medium text-center mt-12'>Get in touch with us</h1>
+      <div className='mt-12 flex justify-center'>
+        <form onSubmit={handleSubmit(submit)} className='p-2 shaodow-xl flex flex-col text-indigo-900 gap-6 xl:w-[32rem] w-[25rem] rounded-xl text-lg'>
           <div className='flex flex-col gap-2'>
-             <label htmlFor="" className='ml-1 text-base'>Full Name</label>
-             <input onChange={(e) => setFullName(e.target.value)} value={fullName}
-             type="text" placeholder='Full Name' className='border-2 border-indigo-600 outline-none p-2 rounded-lg'/>
+             <label htmlFor="fullName" className='ml-1 text-base'>Full Name</label>
+             <input id="fullName"
+             type="text" placeholder='Full Name' className='border-2 border-indigo-600 outline-none p-2 rounded-lg'
+             {...register("fullName", {
+               required:true,
+             })}/>
+             {errors.fullName && <p className='mt-2 text-base text-red-800'>{errors.fullName.message}</p>}
           </div>
           <div className='flex flex-col gap-2'>
-             <label htmlFor="" className='ml-1 text-base'>Email</label>
-             <input onChange={(e) => setEmail(e.target.value)} value={email}
-             type="email" placeholder='Email' className='border-2 border-indigo-600 outline-none p-2 rounded-lg'/>
+             <label htmlFor="email" className='ml-1 text-base'>Email</label>
+             <input id="email"
+             type="email" placeholder='Email' className='border-2 border-indigo-600 outline-none p-2 rounded-lg'
+             {...register("email", {
+               required: true,
+               validate: {
+                  matchPattern: (value) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(value) ||
+                  "Invalid email address"
+               }
+             })}/>
+             {errors.email && <p className='mt-2 text-base text-red-800'>{errors.email.message}</p>}
           </div>
-          <div className='flex flex-col gap-2 '>
-             <label htmlFor="" className='ml-1 text-base'>Number</label>
-             <input onChange={(e) => setNumber(e.target.value)} value={number}
-             type="number" placeholder='Number' className='border-2  border-indigo-600 outline-none p-2 rounded-lg'/>
-          </div> 
           <div className='flex flex-col gap-2'>
-             <label htmlFor="" className='ml-1 text-base'>Reason for Contact</label>
-             <input onChange={(e) => setReason(e.target.value)} value={reason}
-             type="text" placeholder='Reason for Contact' className='border-2 border-indigo-600 outline-none p-2 rounded-lg'/>
+             <label htmlFor="reason" className='ml-1 text-base'>Reason for Contact</label>
+             <input id="reason"
+             type="text" placeholder='Reason for Contact' className='border-2 border-indigo-600 outline-none p-2 rounded-lg'
+             {...register("reason", {
+               required:true,
+             })}/>
+             {errors.reason && <p className='mt-2 text-base text-red-800'>{errors.reason.message}</p>}
           </div> 
-          <button className='mt-4 bg-indigo-700 rounded-lg text-white text-2xl px-5 py-3' onClick={handleSubmit}>Submit</button>
+          <button type='submit' className='mt-4 bg-indigo-700 rounded-lg text-white xl:text-2xl text-xl xl:px-5 xl:py-3 px-3 py-2'>Submit</button>
         </form>
       </div>
      </>

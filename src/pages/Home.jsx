@@ -6,11 +6,11 @@ function Home() {
   return (
      <>
       <div className='text-center h-[9/10]'>
-        <div className='mt-[7.5rem] font-medium flex flex-col tracking-wider items-center gap-[3.4rem]'>
-           <h1 className='text-indigo-900 text-8xl'>Axiom</h1>
-           <h1 className='text-[3.5rem] mb-8'>Refined Quality for Discerning Taste</h1>
+        <div className='xl:mt-[7.5rem] mt-[5rem] font-medium flex flex-col tracking-wider items-center gap-[4rem]'>
+           <h1 className='text-indigo-900 xl:text-8xl text-6xl font-medium'>Axiom</h1>
+           <h1 className='xl:text-[3rem] text-3xl mb-5'>Refined Quality for Discerning Taste</h1>
            <Link to='/products'>
-            <Button text='Shop Now' className='bg-indigo-900 text-4xl px-10 text-white rounded-3xl py-4'/>
+            <Button text='Shop Now' className='bg-indigo-900 xl:text-4xl text-2xl lg:px-16 px-10 py-3 text-white rounded-full lg:py-5'/>
            </Link> 
         </div>
       </div>

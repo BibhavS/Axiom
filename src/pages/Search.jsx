@@ -12,18 +12,18 @@ function Search() {
 
   return (
      <> 
-      <div className='flex justify-center font-medium mt-8'>
+      <div className='flex justify-center font-normal mt-8'>
          <form onSubmit = {(e) => e.preventDefault()} className='flex gap-3 items-center'>
              <input type="text" value={input} onChange={(e) => setInput(e.target.value)}
-             className='w-[35rem] text-xl outline-none border-b-[3px] border-indigo-900 px-2 py-2' placeholder='Search for Products...'/>
+             className='xl:w-[35rem] w-[25rem] xl:text-xl text-base outline-none border-b-[3px] border-indigo-900 px-2 py-2' placeholder='Search for Products...'/>
              <FaSearch size={30} color='#312e81'/>
          </form>
       </div>
       <div className='mt-10'>
          {input.length != 0 ? (
-           <h3 className='ml-12 text-2xl font-medium'>{filteredProducts?.length} Results Found:</h3>
+           <h3 className='ml-12 lg:text-2xl text-xl font-medium'>{filteredProducts?.length} Results Found:</h3>
          ) : null}
-         <div className='grid grid-cols-3'>
+         <div className='grid lg:grid-cols-3 grid-cols-2'>
             {filteredProducts?.map(product => (
               <ProductCard product={product} key={product.id}/>
             ))}

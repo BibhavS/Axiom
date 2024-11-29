@@ -8,14 +8,14 @@ function Header() {
     const data = useSelector(state => state.cart)
     return (
         <div>
-            <div className='h-20 shadow-xl flex items-center px-16 py-[3.5rem] justify-between bg-slate-100'>
-                <div className='flex items-center w-28'>
-                    <img src={logo} alt="logo" className='h-24 w-28' />
-                    <div className='text-3xl tracking-widest font-semibold text-indigo-900'>
+            <div className='md:h-20 shadow-xl flex items-center xl:px-16 px-10 py-[3.5rem] justify-between bg-slate-100'>
+                <div className='flex items-center lg:w-28'>
+                    <img src={logo} alt="logo" className='xl:h-24 xl:w-28 h-16 w-20' />
+                    <div className='text-3xl xl:block hidden tracking-widest font-semibold text-indigo-900'>
                         <span>Axiom</span>
                     </div>
                 </div>
-                <div className='flex gap-8 items-center text-2xl font-semibold'>
+                <div className='flex gap-8 items-center xl:text-2xl lg:text-xl text-base font-semibold'>
                     <NavLink to='/' className={({ isActive }) => `${isActive ? 'text-indigo-900' : 'text-black'}`}>
                         Home
                     </NavLink>
@@ -32,11 +32,11 @@ function Header() {
                         My Cart
                     </NavLink>
                 </div>
-                <div className='w-28 flex items-center gap-5'>
+                <div className='flex items-center gap-3 lg:w-28'>
                     <Link to='/cart'>
-                        <FaShoppingCart size={40} color='#312e81' />
+                        <FaShoppingCart className='xl:h-10 xl:w-10 h-6 w-6' color='#312e81' />
                     </Link>
-                    <span className=' text-indigo-900 text-2xl font-semibold'>{data.cartProducts.length}</span>
+                    <span className=' text-indigo-900 xl:text-2xl text-xl font-semibold'>{data.cartProducts.length}</span>
                 </div>
             </div>
         </div>
